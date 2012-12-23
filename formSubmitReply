@@ -1,0 +1,15 @@
+function formSubmitReply(e) {
+  var sheet = SpreadsheetApp.getActiveSheet();
+  var row =  SpreadsheetApp.getActiveSheet().getLastRow();
+  var userEmail = sheet.getRange(row,3).getValue();
+  var subject = "Sankalp 2013 :: Registration";
+  var id = sheet.getRange(row,7).getValue();
+  var events = sheet.getRange(row,5).getValue();
+  var name = sheet.getRange(row,2).getValue();
+  var msg = "\n You have to pay registration fees on the registration desk, on the date of the fest. Must bring your college ID card and a printed copy of this email.\n" 
+  var body = "Thank you " +name+ " for your registartion. \n\n Your ID is : "+id+"\n\n Events :"+events+"\n\n"+msg+" All The Best.";  
+  MailApp.sendEmail(userEmail, 
+                    subject, 
+                    body,                    
+                    {name:"Sankalp'13 Help Desk"});
+}
